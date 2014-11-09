@@ -1,11 +1,11 @@
 # Escreva um programa que leia 10 números e mostre-os na ordem em que foram lidos.
 .data 
-fibs:	.word 0:19	# array de words que armazenará valores coletados
+newArray:	.word 0:19	# array de words que armazenará valores coletados
 size:	.word 19	# tamanho do array
 
 .text
 main:
-#la	$s0, fibs	# carregue endereço do array
+#la	$s0, newArray	# carregue endereço do array
 lui	$at, 0x1001 
 add	$s0, $zero, $at
 
