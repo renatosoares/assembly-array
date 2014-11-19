@@ -1,7 +1,7 @@
-# Escreva um programa que leia 10 números e mostre-os na ordem em que foram lidos.
+# Escreva um programa que leia 19 números e mostre-os na ordem em que foram lidos.
 .data 
-newArray:	.word 0:19	# array de words que armazenará valores coletados
-size:	.word 19	# tamanho do array
+newArray:	.word	0:19	# array de words que armazenará valores coletados
+size:		.word 	19	# tamanho do array
 
 .text
 main:
@@ -28,7 +28,7 @@ loopAdd:
 	addi	$s0, $s0, 4
 
 	addi	$s1, $s1, -1
-	bgtz	$s1, loopAdd	# Se maior que zero vá para repetição
+	bgtz	$s1, loopAdd	# Se maior que zero vá para repetição 
 ###################================================
 
 # Os números são computados e armazenados no array
@@ -37,7 +37,12 @@ lui	$at, 0x1001
 add	$a0, $zero, $at
 
 add	$a1, $zero, $s5
-j	print
+jal	print
+
+	
+# fializa o sistema retornando zero
+	addi	$v0, $zero, 10
+	syscall
 ###################================================
 
 # Sub-rotina para imprimir os números em linha
@@ -66,7 +71,6 @@ out:
 	#la	$a0, space
 	lui	$at, 0x1001
 	addi	$a0, $at, 0x50
-	
 	#li	$v0, 4
 	addi	$v0, $zero, 4
 	syscall
@@ -74,9 +78,6 @@ out:
 	addi	$t0, $t0, 4
 	addi	$t1, $t1, -1
 	bgtz	$t1, out
+
 	
-fim:
-	addi	$v0, $zero, 10
-	syscall
-
-
+	jr   	$ra              # return from subroutine
